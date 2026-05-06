@@ -1,0 +1,153 @@
+# Example Service Account Secrets for Cluster
+#
+# DISCLAIMER: This script is provided "as is" without warranty.
+# Use at your own risk. Not supported.
+#
+# These secrets MUST be created BEFORE the Cluster object.
+# CAPI will use these pre-created secrets instead of generating new keys.
+#.
+# Generate RSA key pair:
+#   openssl genrsa -out sa.key 4096
+#   openssl rsa -in sa.key -pubout -out sa.pub
+#
+# Create the secret in the vSphere namespace of the cluster.  This will be picked up on the cluster and created as a service account
+apiVersion: v1
+kind: Secret
+metadata:
+  name: reuse-svc-cluster-330-sa     # Format <clustername>-sa
+  namespace: asb88ro09clu4-tkg                # vSphere Namespace where VKS cluster will be created
+type: cluster.x-k8s.io/secret
+stringData:
+  tls.crt: |
+    -----BEGIN PUBLIC KEY-----
+    MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAkyIgnvelaiJ4vbBvw3n3
+    Ez/lQbGNyXZ5qdfhqNpVnbAy/rtBMqZEmE8agD3woEjMuHZ1x++9yUeAW1Egl6T7
+    g3f1lDW5H3xo4vqbx7TCnrJlfUYlbFBP0deSPSBjpZE/X+ceKS4dvWRPnXy0RJIO
+    z4zo5/H1co98HbU+W01TJBxeRmD36hVBdqHLsnEbrVvnDQVy8H+SqWNmVHrGEzyy
+    1tPZEDCYP6yt8BIq/u4UThYKwmQTY1CE2Ou6cv+k4ThCUW/TajNGez8ELBLZSCY8
+    oWY7wRHqXffALxcl3NRPPjCzIpCD22YJCvNNgk1rUJpoWfXhHsVnY1l4QaXs76Mo
+    G7xRmh/LimHDMeqATN96NF+/c0YTxhOyJ/abJd3wlqJnbGxnlQoNODtBY9Vl+anU
+    lsJkxYg2Jvm/SB4I1aKT0oQDbwdlSmIpKRi3MzgVp6FVOTJkWr6+E55NqWSRtXHz
+    6BgCmI4KhCbQkl1LXdXyapXurq0UuJSr4bhF00zuRlc2w7M5PDf8xAZjcPYC4x1Y
+    fUQ3s3xOmYZZwBw7x13SMvZVZpE2q7kKecaQ4se1iFa+JBNoqTVkeTv3AiBxDfKF
+    DU7GddnT5oOJA5VHtv6LKUDth9osyOiCsIWBcWhNKL2mfwHRFOod2lMxYrQPXwWl
+    IWzCIYH0xTVZqtkABNXbJLsCAwEAAQ==
+    -----END PUBLIC KEY-----
+  tls.key: |
+    -----BEGIN PRIVATE KEY-----
+    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
+    HOG2XcDJTosuSdcweb9eWkfl/rApdw==
+    -----END PRIVATE KEY-----
+---
+# Example Cluster Manifest for Supervisor Cluster
+#
+# This file creates a workload cluster in the VKS supervisor cluster.
+# Apply this to the SUPERVISOR cluster, not the workload cluster.
+#
+# Prerequisites:
+# 1. Secret above correct Key pair updated and created in the correct namespace and name <clustername>-sa
+# 2. Custom ClusterClass applied to supervisor (svc-account-issuer-custom-class-3.3.0.yaml)
+# 3. Update .metadata.namespace to your vSphere namespace
+# 4. Update storageclass to match your available storageclass
+#
+# Usage:
+#    # First, edit the secrets above with your actual keys
+#    kubectl apply -f test-svc-cluster.yaml
+
+#
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: reuse-svc-cluster-330
+  namespace: asb88ro09clu4-tkg               # update to match your vsphere namespace
+spec:
+  clusterNetwork:
+    services:
+      cidrBlocks: ["198.51.100.0/12"]
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+    serviceDomain: "cluster.local"
+  topology:
+    # Set to your custom cluster class name
+    class: svc-account-issuer-custom-class-v3.3.0
+    version: v1.32.7---vmware.3-fips-vkr.1
+    controlPlane:
+      replicas: 1
+      metadata:
+        annotations:
+          run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
+    workers:
+      machineDeployments:
+        - class: node-pool
+          name: np01
+          replicas: 3
+          metadata:
+            annotations:
+              run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
+    variables:
+    # Default Value can be updated at cluster build or patched
+      - name: serviceAccountIssuer
+        value: "https://kubernetes.default.svc.cluster.local"
+      - name: vmClass
+        value: best-effort-large                                # verify vsphere namespace contains this vmclass
+      - name: storageClass
+        value:  asb88ro09clu4-tanzu-storage                      # update to match available storageclass
+      - name: volumes
+        value:
+          - name: containerd
+            capacity: "60Gi"
+            mountPath: /var/lib/containerd
+            storageClass: asb88ro09clu4-tanzu-storage
+      - name: vsphereOptions
+        value:
+          persistentVolumes:
+            defaultStorageClass:  asb88ro09clu4-tanzu-storage    # update to match available storageclass
+
