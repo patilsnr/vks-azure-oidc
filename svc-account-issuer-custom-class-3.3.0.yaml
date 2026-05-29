@@ -16,7 +16,7 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: ClusterClass
 metadata:
   name: svc-account-issuer-custom-class-v3.3.0
-  namespace: test-ns
+  namespace: asb88ro09clu4-tkg
   annotations:
     run.tanzu.vmware.com/resolve-tkr: ""
   labels:
